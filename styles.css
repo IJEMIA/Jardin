@@ -1,0 +1,843 @@
+/* ========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+======================================== */
+:root {
+    /* Colores principales */
+    --primary-green: #4CAF50;
+    --primary-green-dark: #388E3C;
+    --primary-green-light: #81C784;
+    
+    /* Colores de tema para rutinas */
+    --color-green: #4CAF50;
+    --color-blue: #2196F3;
+    --color-orange: #FF9800;
+    --color-purple: #9C27B0;
+    --color-pink: #E91E63;
+    --color-yellow: #FFC107;
+    
+    /* Colores de interfaz */
+    --bg-primary: #f0f4f0;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --text-muted: #b2bec3;
+    
+    /* Colores de maceta */
+    --pot-primary: #8B4513;
+    --pot-secondary: #A0522D;
+    --pot-rim: #CD853F;
+    --soil: #3d2914;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    
+    /* Bordes */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 50%;
+}
+
+/* ========================================
+   RESET Y BASE
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+======================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.header {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-green-dark);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ========================================
+   SECCIÓN AGREGAR RUTINA
+======================================== */
+.add-routine-section {
+    margin-bottom: 30px;
+}
+
+.add-routine-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-routine-card h2 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.routine-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.input-group input {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.input-group select {
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+}
+
+.btn-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-add:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   ESTADÍSTICAS
+======================================== */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-green-dark);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   SECCIÓN DE RUTINAS
+======================================== */
+.routines-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.routines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+/* ========================================
+   TARJETA DE RUTINA (MACETA)
+======================================== */
+.routine-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 220px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+.routine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.routine-card.completed {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border: 2px solid var(--primary-green);
+}
+
+/* Nombre de la rutina */
+.routine-name {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    padding: 8px 12px;
+    background: #f5f5f5;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Contenedor de la planta */
+.plant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 200px;
+    cursor: pointer;
+}
+
+/* Árbol/Planta */
+.tree {
+    font-size: 4rem;
+    transition: all 0.5s ease;
+    position: absolute;
+    bottom: 80px;
+    animation: treeBounce 0.5s ease;
+}
+
+@keyframes treeBounce {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.tree.growing {
+    animation: treeGrow 0.6s ease;
+}
+
+@keyframes treeGrow {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.tree.completed {
+    animation: treeCelebrate 1s ease infinite;
+}
+
+@keyframes treeCelebrate {
+    0%, 100% { transform: scale(1) rotate(-2deg); }
+    50% { transform: scale(1.1) rotate(2deg); }
+}
+
+/* Maceta */
+.pot {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 70px;
+    transition: all 0.3s ease;
+}
+
+.pot-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 55px;
+    background: linear-gradient(135deg, var(--pot-secondary) 0%, var(--pot-primary) 100%);
+    border-radius: 0 0 15px 15px;
+    box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pot-rim {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95px;
+    height: 15px;
+    background: linear-gradient(135deg, var(--pot-rim) 0%, var(--pot-secondary) 100%);
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.pot-soil {
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 12px;
+    background: var(--soil);
+    border-radius: 50%;
+}
+
+/* Colores de maceta según tema */
+.routine-card[data-color="green"] .pot-body {
+    background: linear-gradient(135deg, #66BB6A 0%, #43A047 100%);
+}
+
+.routine-card[data-color="green"] .pot-rim {
+    background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%);
+}
+
+.routine-card[data-color="blue"] .pot-body {
+    background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
+}
+
+.routine-card[data-color="blue"] .pot-rim {
+    background: linear-gradient(135deg, #64B5F6 0%, #42A5F5 100%);
+}
+
+.routine-card[data-color="orange"] .pot-body {
+    background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+}
+
+.routine-card[data-color="orange"] .pot-rim {
+    background: linear-gradient(135deg, #FFB74D 0%, #FFA726 100%);
+}
+
+.routine-card[data-color="purple"] .pot-body {
+    background: linear-gradient(135deg, #AB47BC 0%, #8E24AA 100%);
+}
+
+.routine-card[data-color="purple"] .pot-rim {
+    background: linear-gradient(135deg, #BA68C8 0%, #AB47BC 100%);
+}
+
+.routine-card[data-color="pink"] .pot-body {
+    background: linear-gradient(135deg, #EC407A 0%, #D81B60 100%);
+}
+
+.routine-card[data-color="pink"] .pot-rim {
+    background: linear-gradient(135deg, #F06292 0%, #EC407A 100%);
+}
+
+.routine-card[data-color="yellow"] .pot-body {
+    background: linear-gradient(135deg, #FFCA28 0%, #FFA000 100%);
+}
+
+.routine-card[data-color="yellow"] .pot-rim {
+    background: linear-gradient(135deg, #FFD54F 0%, #FFCA28 100%);
+}
+
+/* Indicador de progreso */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    background: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+    background: var(--primary-green);
+    transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+.progress-dot.completed {
+    background: var(--primary-green-dark);
+}
+
+/* Botón eliminar */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: #ffebee;
+    color: #e53935;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.routine-card:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: #e53935;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Mensaje de nivel */
+.level-message {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.level-message.completed {
+    color: var(--primary-green-dark);
+    font-weight: 700;
+}
+
+/* ========================================
+   ESTADO VACÍO
+======================================== */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ========================================
+   LEYENDA
+======================================== */
+.legend-section {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    box-shadow: var(--shadow-sm);
+}
+
+.legend-section h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: var(--radius-md);
+    min-width: 100px;
+    transition: transform 0.3s ease;
+}
+
+.legend-item:hover {
+    transform: scale(1.05);
+}
+
+.legend-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.legend-item span {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.legend-item small {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+/* ========================================
+   MODAL
+======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.modal-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-cancel,
+.btn-delete {
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background: #f5f5f5;
+    color: var(--text-primary);
+}
+
+.btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.btn-delete {
+    background: #e53935;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c62828;
+}
+
+/* ========================================
+   TOAST
+======================================== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text-primary);
+    color: white;
+    padding: 15px 25px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast.success {
+    background: var(--primary-green);
+}
+
+.toast.error {
+    background: #e53935;
+}
+
+.toast.info {
+    background: #2196F3;
+}
+
+/* ========================================
+   EFECTOS ESPECIALES
+======================================== */
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1.5rem;
+    animation: sparkle 1s ease forwards;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.5);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .routines-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+    }
+    
+    .routine-card {
+        max-width: 180px;
+    }
+    
+    .plant-container {
+        height: 180px;
+    }
+    
+    .tree {
+        font-size: 3rem;
+        bottom: 70px;
+    }
+    
+    .pot-body {
+        width: 65px;
+        height: 45px;
+    }
+    
+    .pot-rim {
+        width: 78px;
+        height: 12px;
+        bottom: 42px;
+    }
+    
+    .pot-soil {
+        width: 58px;
+        height: 10px;
+        bottom: 43px;
+    }
+    
+    .legend-items {
+        gap: 10px;
+    }
+    
+    .legend-item {
+        min-width: 80px;
+        padding: 10px;
+    }
+    
+    .legend-icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header {
+        padding: 20px 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .add-routine-card {
+        padding: 20px;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .input-group input,
+    .input-group select {
+        width: 100%;
+    }
+    
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .routines-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .routine-card {
+        max-width: 100%;
+    }
+}
