@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Rutinas - Cultiva tus Hábitos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌱 Seguimiento de Rutinas</h1>
+            <p class="subtitle">Cada rutina es una semilla. ¡Hazla crecer día a día!</p>
+        </header>
+
+        <!-- Formulario para nueva rutina -->
+        <div class="add-routine-section">
+            <div class="add-routine-card">
+                <h2>➕ Nueva Rutina</h2>
+                <form id="routineForm" class="routine-form">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="routineName" 
+                            placeholder="Nombre de la rutina..." 
+                            required
+                            maxlength="50"
+                        >
+                        <select id="routineColor">
+                            <option value="green">🟢 Verde</option>
+                            <option value="blue">🔵 Azul</option>
+                            <option value="orange">🟠 Naranja</option>
+                            <option value="purple">🟣 Morado</option>
+                            <option value="pink">🩷 Rosa</option>
+                            <option value="yellow">🟡 Amarillo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-add">
+                        <span class="btn-icon">🌱</span>
+                        Plantar Rutina
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <span class="stat-icon">🌿</span>
+                <div class="stat-info">
+                    <span class="stat-number" id="totalRoutines">0</span>
+                    <span class="stat-label">Rutinas Activas</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🌳</span>
+                <div class="stat-info">
+                    <span class="stat-number" id="completedTrees">0</span>
+                    <span class="stat-label">Árboles Completos</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">👆</span>
+                <div class="stat-info">
+                    <span class="stat-number" id="totalClicks">0</span>
+                    <span class="stat-label">Clics Totales</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de rutinas -->
+        <div class="routines-section">
+            <h2 class="section-title">🪴 Mis Rutinas</h2>
+            <div id="routinesGrid" class="routines-grid">
+                <!-- Las rutinas se generarán dinámicamente -->
+            </div>
+            
+            <!-- Mensaje cuando no hay rutinas -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">🌱</div>
+                <h3>¡Sin rutinas aún!</h3>
+                <p>Plantá tu primera rutina para empezar a cultivar buenos hábitos.</p>
+            </div>
+        </div>
+
+        <!-- Leyenda de crecimiento -->
+        <div class="legend-section">
+            <h3>📊 Niveles de Crecimiento</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-icon stage-0">🪴</div>
+                    <span>Nivel 0</span>
+                    <small>Semilla plantada</small>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon stage-1">🌱</div>
+                    <span>Nivel 1</span>
+                    <small>1 clic</small>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon stage-2">🌿</div>
+                    <span>Nivel 2</span>
+                    <small>2 clics</small>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon stage-3">🪻</div>
+                    <span>Nivel 3</span>
+                    <small>3 clics</small>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon stage-4">🌺</div>
+                    <span>Nivel 4</span>
+                    <small>4 clics</small>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon stage-5">🌳</div>
+                    <span>Nivel 5</span>
+                    <small>¡Árbol completo!</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">🗑️</div>
+            <h3>¿Eliminar rutina?</h3>
+            <p>Esta acción no se puede deshacer. El árbol se perderá permanentemente.</p>
+            <div class="modal-buttons">
+                <button id="cancelDelete" class="btn-cancel">Cancelar</button>
+                <button id="confirmDelete" class="btn-delete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de notificaciones -->
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
